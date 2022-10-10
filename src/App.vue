@@ -1,11 +1,15 @@
 <template>
   <div class="app">
-    <div class="nav">
-      <router-link to="/">spacer</router-link>
-      <router-link to="/about">about</router-link>
-    </div>
+    <router-view />
   </div>
-  <router-view/>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,800;1,300&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+</style>

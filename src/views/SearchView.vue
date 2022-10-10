@@ -1,14 +1,10 @@
 <template>
   <div class="wrapper">
+    <Clain> </Clain>
     <div class="search">
       <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
       <label for="search">Search</label>
       <input id="search" name="search" v-model="searchValue" @input="handleInput" />
-      <ul>
-        <li v-for="item in results" :key="item.data[0].nasa_id">
-          <p>{{ item.data[0].description }}</p>
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -16,6 +12,7 @@
 <script>
 import axios from 'axios';
 import debounce from 'lodash.debounce';
+import Clain from '@/components/Clain.vue';
 // import { response } from 'express';
 
 const API = 'https://images-api.nasa.gov/search';
@@ -42,20 +39,21 @@ export default {
         });
     }, 500),
   },
+  components: { Clain },
 };
 </script>
 <style lang="scss" scoped>
 .wrapper {
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   align-items: center;
   padding: 30px;
   width: 100%;
 }
 .search {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   width: 300px;
 
   label {
