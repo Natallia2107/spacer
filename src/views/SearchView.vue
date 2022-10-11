@@ -1,7 +1,8 @@
 <template>
   <div class="wrapper">
-    <Claim> </Claim>
-    <SearchInput> </SearchInput>
+    <Claim v-if="step === 0" > </Claim>
+    <SearchInput v-model="searchValue" :dark="step === 1" > </SearchInput>
+    <HeroImage v-if="step === 0" ></HeroImage>
   </div>
 </template>
 
@@ -10,14 +11,17 @@ import axios from 'axios';
 import debounce from 'lodash.debounce';
 import Claim from '@/components/Claim.vue';
 import SearchInput from '@/components/SearchInput.vue';
+import HeroImage from '@/components/HeroImage.vue';
 
 const API = 'https://images-api.nasa.gov/search';
 export default {
   // eslint-disable-next-line quotes
   name: "SearchView",
-  components: { Claim, SearchInput },
+  components: { Claim, SearchInput, HeroImage },
   data() {
     return {
+      loading: false,
+      step: 0,
       searchValue: '',
       results: [],
     };
@@ -48,9 +52,6 @@ export default {
   padding: 30px;
   width: 100%;
   height: 100vh;
-  background-image: url('../assets/hero-img.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 80% 0%;
+  min-height: 100vh;
 }
 </style>
