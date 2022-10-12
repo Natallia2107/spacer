@@ -4,32 +4,31 @@
 
 <script>
 export default {
-  // eslint-disable-next-line quotes
-  name: "HeroImage",
+  name: 'HeroImage',
 };
 </script>
 
 <style lang="scss" scoped>
 .heroImage {
-  position: fixed;
   width: 100%;
   height: 100vh;
+  position: fixed;
   top: 0;
   z-index: -1;
   background-image: url("../assets/hero-img.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 80% 0%;
+  background-position: 40% 50%;
 }
 
 .heroImage::after {
-    content: '';
-    background: rgba(0, 0, 0, .2);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100vh;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+  content: "";
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
 }
 </style>

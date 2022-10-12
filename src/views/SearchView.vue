@@ -1,27 +1,27 @@
 <template>
   <div class="wrapper">
-    <Claim v-if="step === 0" > </Claim>
-    <SearchInput v-model="searchValue" :dark="step === 1" > </SearchInput>
-    <HeroImage v-if="step === 0" ></HeroImage>
+    <Claim> </Claim>
+    <div class="search">
+      <!-- eslint-disable-next-line vuejs-accessibility/label-has-for -->
+      <label for="search">Search</label>
+      <input id="search" name="search" v-model="searchValue" @input="handleInput" />
+    </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
 import debounce from 'lodash.debounce';
-import Claim from '@/components/Claim.vue';
-import SearchInput from '@/components/SearchInput.vue';
-import HeroImage from '@/components/HeroImage.vue';
+import Claim from '../components/Claim.vue';
+// import { response } from 'express';
 
 const API = 'https://images-api.nasa.gov/search';
 export default {
   // eslint-disable-next-line quotes
   name: "SearchView",
-  components: { Claim, SearchInput, HeroImage },
+  components: { Claim },
   data() {
     return {
-      loading: false,
-      step: 0,
       searchValue: '',
       results: [],
     };
@@ -47,11 +47,23 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   margin: 0;
   padding: 30px;
   width: 100%;
-  height: 100vh;
-  min-height: 100vh;
+}
+.search {
+  display: none;
+  flex-direction: column;
+  width: 250px;
+
+  label {
+    font-family: "Montserrat", sans-serif;
+  }
+
+  input {
+    height: 30px;
+    border: 0;
+    border-bottom: 1px solid black;
+  }
 }
 </style>

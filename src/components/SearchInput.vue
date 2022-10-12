@@ -1,8 +1,7 @@
 <template>
-  <div class="searchWrapper">
-    <input id="search" name="search" @input="handleChange" :value="value" :class="{ dark }" />
-  </div>
+  <input id="search" name="search" :class="{ dark }" :value="value" @input="handleChange" />
 </template>
+
 <script>
 export default {
   name: 'SearchInput',
@@ -23,28 +22,38 @@ export default {
   },
 };
 </script>
+
 <style lang="scss" scoped>
-.searchWrapper {
-  margin-top: 50px;
+input {
+  margin-top: 100px;
   display: flex;
-  flex-direction: column;
   width: 250px;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  font-size: 18px;
+  height: 30px;
+  border: 0;
+  background: none;
+  border-bottom: 1px solid #fff;
+  transition: box-shadow 0.3s ease-out;
 
-  input {
-    height: 30px;
-    border: 0;
-    text-align: center;
-    font-size: 18px;
-    font-weight: 300;
-    border-bottom: 1px solid white;
-    background: none;
-    color: white;
-    transition: box-shadow .3s ease-out;
+  @media (min-width: 1024px) {
+    font-weight: 400;
   }
+}
 
-  input:focus {
-    outline: none;
-    box-shadow: 0 10px 20px -8px rgba(255, 255, 255, .5);
-  }
+input:focus {
+  outline: none;
+  box-shadow: 0 5px 10px -8px rgba(255, 255, 255, 0.8);
+}
+
+.dark {
+  color: #1e3d4a;
+  border-bottom-color: #1e3d4a;
+}
+
+.dark:focus {
+  box-shadow: 0 10px 20px -8px rgba(#1e3d4a, 0.2);
 }
 </style>
